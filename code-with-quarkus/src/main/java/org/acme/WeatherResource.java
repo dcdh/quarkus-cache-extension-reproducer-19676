@@ -9,15 +9,27 @@ import org.acme.greeting.extension.runtime.WeatherForecastService;
 
 import java.time.LocalDate;
 
-@Path("/hello")
-public class GreetingResource {
+@Path("/weather")
+public class WeatherResource {
 
     @Inject
     WeatherForecastService weatherForecastService;
 
+    @Inject
+    AppWeatherForecastService appWeatherForecastService;
+
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
+    public String weatherForecastService() {
         return weatherForecastService.getDailyForecast(LocalDate.of(2026, 1, 1), "Paris");
     }
+
+    @GET
+    @Produces
+    @Path("/app")
+    public String appWeatherForecastService() {
+        return appWeatherForecastService.getDailyForecast(LocalDate.of(2026, 1, 1), "Paris");
+    }
+
+
 }
