@@ -38,6 +38,12 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest</artifactId>
         </dependency>
+        <!-- help debugging-->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-cache-deployment</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.acme</groupId>
             <artifactId>my-extension-using-cache-extension</artifactId>

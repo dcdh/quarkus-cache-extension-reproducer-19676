@@ -2,6 +2,7 @@ package org.acme.greeting.extension.deployment;
 
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.builditem.AdditionalIndexedClassesBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import org.acme.greeting.extension.runtime.WeatherForecastService;
 
@@ -17,5 +18,10 @@ class MyExtensionUsingCacheExtensionProcessor {
     @BuildStep
     AdditionalBeanBuildItem additionalBeanBuildItemProducer() {
         return AdditionalBeanBuildItem.builder().addBeanClass(WeatherForecastService.class).build();
+    }
+
+    @BuildStep
+    AdditionalIndexedClassesBuildItem additionalIndexedClassesBuildItem() {
+        return new AdditionalIndexedClassesBuildItem(WeatherForecastService.class.getName());
     }
 }
